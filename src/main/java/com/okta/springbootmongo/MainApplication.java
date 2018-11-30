@@ -10,7 +10,6 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 
 @SpringBootApplication
-//@EnableReactiveMongoRepositories
 public class MainApplication {
     
     public static void main(String[] args) {
@@ -48,25 +47,4 @@ public class MainApplication {
 
         };
     }
-    /*
-    @Autowired
-    MongoClient mongoClient;
-
-    @Bean
-    public ReactiveMongoTemplate reactiveMongoTemplate() {
-        return new ReactiveMongoTemplate(mongoClient, "springbootmongodb");
-    }
-    */
-
-    /*
-    @Override
-    protected String getDatabaseName() {
-        return "springbootmongodb";
-    }
-
-    @Override
-    public MongoClient reactiveMongoClient() {
-        return MongoClients.create();
-    }
-    */
 }

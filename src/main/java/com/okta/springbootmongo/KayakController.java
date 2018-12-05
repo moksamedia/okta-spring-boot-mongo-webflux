@@ -1,9 +1,12 @@
 package com.okta.springbootmongo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 @Controller
@@ -15,20 +18,13 @@ public class KayakController {
 
   @PostMapping()
   public @ResponseBody
-  String addNewUser(
-      @RequestParam String name,
-      @RequestParam String owner,
-      @RequestParam Number value,
-      @RequestParam String makeModel
-  ) {
-    Kayak kayak = new Kayak(name, owner, value, makeModel);
-    kayakRepository.save(kayak);
-    return "Saved";
+  Mono<Kayak> addKayak(@RequestBody Kayak kayak) {
+    return kayakRepository.save(kayak);
   }
 
   @GetMapping()
   public @ResponseBody
-  Flux<Kayak> getAllUsers() {
+  Flux<Kayak> getAllKayaks() {
     Flux<Kayak> result = kayakRepository.findAll();
     return result;
   }

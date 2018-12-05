@@ -6,9 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import reactor.core.publisher.Flux;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
-
 @SpringBootApplication
 public class MainApplication {
 
@@ -32,7 +29,7 @@ public class MainApplication {
               Flux
                   .just(data)
                   .map(array -> {
-                    return new Kayak((String)array[0], (String)array[1], (Number)array[2], (String)array[3]);
+                    return new Kayak((String) array[0], (String) array[1], (Number) array[2], (String) array[3]);
                   })
                   .flatMap(repository::save)
           )

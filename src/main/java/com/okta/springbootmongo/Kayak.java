@@ -3,8 +3,7 @@ package com.okta.springbootmongo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.data.mongodb.core.mapping.Document;
+  import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
@@ -12,12 +11,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class Kayak {
 
-    private String name;
+  private String name;
 
-    private String owner;
+  private String owner;
 
-    private Number value;
+  private Number value;
 
-    private String makeModel;
-    
+  private String makeModel;
+
 }

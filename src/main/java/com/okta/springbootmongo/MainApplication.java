@@ -11,40 +11,34 @@ import java.text.ParseException;
 
 @SpringBootApplication
 public class MainApplication {
-    
-    public static void main(String[] args) {
-        SpringApplication.run(MainApplication.class, args);
-    }
 
-    @Bean
-    ApplicationRunner init(KayakRepository repository) {
+  public static void main(String[] args) {
+    SpringApplication.run(MainApplication.class, args);
+  }
 
-        String[][] data = {
-                {"sea", "Andrew", "300.12", "NDK"},
-                {"creek", "Andrew", "100.75", "Piranha"},
-                {"loaner", "Andrew", "75", "Necky"}
-        };
+  @Bean
+  ApplicationRunner init(KayakRepository repository) {
 
-        return args -> {
-            repository
-                .deleteAll()
-                .thenMany(
-                    Flux
-                        .just(data)
-                        .map(array -> {
-                            try {
-                                return new Kayak(array[0], array[1], NumberFormat.getInstance().parse(array[2]), array[3]);
-                            }
-                            catch (ParseException e) {
-                                e.printStackTrace();
-                                return null;
-                            }
-                        })
-                        .flatMap(repository::save)
-                    )
-                .thenMany(repository.findAll())
-                .subscribe(kayak -> System.out.println("saving " + kayak.toString()));
+    Object[][] data = {
+        {"sea", "Andrew", 300.12, "NDK"},
+        {"creek", "Andrew", 100.75, "Piranha"},
+        {"loaner", "Andrew", 75, "Necky"}
+    };
 
-        };
-    }
+    return args -> {
+      repository
+          .deleteAll()
+          .thenMany(
+              Flux
+                  .just(data)
+                  .map(array -> {
+                    return new Kayak((String)array[0], (String)array[1], (Number)array[2], (String)array[3]);
+                  })
+                  .flatMap(repository::save)
+          )
+          .thenMany(repository.findAll())
+          .subscribe(kayak -> System.out.println("saving " + kayak.toString()));
+
+    };
+  }
 }

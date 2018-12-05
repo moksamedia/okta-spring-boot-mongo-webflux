@@ -28,7 +28,6 @@ public class KayakController {
         Kayak kayak = new Kayak(name, owner, value, makeModel);
         kayakRepository.save(kayak);
         return "Saved";
-        
     }
 
     @GetMapping(path="/all")

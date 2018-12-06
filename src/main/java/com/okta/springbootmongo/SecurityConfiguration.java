@@ -19,13 +19,13 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @EnableWebFluxSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration {
   
   @Bean
   public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
     http
         .authorizeExchange()
+        // protect POST /kayaks based on Admin group membership
         .pathMatchers(HttpMethod.POST, "/kayaks/**").hasAuthority("Admin")
         .anyExchange().authenticated()
         .and()
@@ -34,8 +34,7 @@ public class SecurityConfiguration {
         .jwtAuthenticationConverter(grantedAuthoritiesExtractor());
     return http.build();
   }
-
-
+  
   static class GrantedAuthoritiesExtractor extends JwtAuthenticationConverter {
     protected Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
       Collection<String> authorities = (Collection<String>)jwt.getClaims().get("groups");

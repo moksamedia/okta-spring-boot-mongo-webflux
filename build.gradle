@@ -35,10 +35,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
 
-    compile "org.springframework.boot:spring-boot-starter-security"
-    compile "org.springframework.security:spring-security-oauth2-client"
-    compile "org.springframework.security:spring-security-oauth2-resource-server"
-    compile "org.springframework.security:spring-security-oauth2-jose"
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.security:spring-security-oauth2-client")
+    compile("org.springframework.security:spring-security-oauth2-resource-server")
+    compile("org.springframework.security:spring-security-oauth2-jose")
 
     compileOnly('org.projectlombok:lombok')
 

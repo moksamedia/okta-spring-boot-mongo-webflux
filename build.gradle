@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.6.RELEASE'
+        springBootVersion = '2.1.1.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -33,8 +33,14 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-webflux')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-    compileOnly('org.projectlombok:lombok')
     compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.security:spring-security-oauth2-client"
+    compile "org.springframework.security:spring-security-oauth2-resource-server"
+    compile "org.springframework.security:spring-security-oauth2-jose"
+
+    compileOnly('org.projectlombok:lombok')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('io.projectreactor:reactor-test')

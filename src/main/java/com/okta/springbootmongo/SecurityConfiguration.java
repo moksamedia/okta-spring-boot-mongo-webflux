@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @EnableWebFluxSecurity
+@EnableReactiveMethodSecurity
 public class SecurityConfiguration {
   
   @Bean
@@ -34,7 +35,12 @@ public class SecurityConfiguration {
         .jwtAuthenticationConverter(grantedAuthoritiesExtractor());
     return http.build();
   }
-  
+
+  /*
+    The GrantedAuthoritiesExtractor is used to read the "groups" claim from the JWT and
+    map it to Spring Security authorities, that we can use in the hasAuthority() methods
+    above.
+   */
   static class GrantedAuthoritiesExtractor extends JwtAuthenticationConverter {
     protected Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
       Collection<String> authorities = (Collection<String>)jwt.getClaims().get("groups");

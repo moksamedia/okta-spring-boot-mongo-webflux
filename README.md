@@ -2,7 +2,7 @@
 
 This example is a reactive resource server using Spring Boot Webflux and Spring Data MongoDB. It also implements group-based authorization using Okta and OAuth 2.0.
 
-Please read [Build a Basic App with Spring Boot and MongoDB using Webflux](https://need.final.link) to see how this app was created.
+Please read [Build a Basic App with Spring Boot and MongoDB using Webflux](https://developer.okta.com/blog/2019/01/14/build-a-basic-app-with-spring-boot-and-mongodb/) to see how this app was created.
 
 **Prerequisites:** [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 

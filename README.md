@@ -19,7 +19,7 @@ To install this example application, run the following commands:
 
 ```bash
 git clone https://need.final.link
-cd okta-spring-boot-jpa-example
+cd okta-spring-boot-mongodb-example
 ```
 
 This will get a copy of the project installed locally. To install all of its dependencies and start the app, run:

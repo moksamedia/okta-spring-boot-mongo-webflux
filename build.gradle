@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.1.1.RELEASE'
+        springBootVersion = '2.1.2.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -39,6 +39,8 @@ dependencies {
     compile("org.springframework.security:spring-security-oauth2-client")
     compile("org.springframework.security:spring-security-oauth2-resource-server")
     compile("org.springframework.security:spring-security-oauth2-jose")
+
+    compile('com.okta.spring:okta-spring-boot-starter:1.0.0')
 
     compileOnly('org.projectlombok:lombok')
 

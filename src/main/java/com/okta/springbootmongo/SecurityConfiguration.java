@@ -26,8 +26,8 @@ public class SecurityConfiguration {
   public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
     http
         .authorizeExchange()
-        .pathMatchers(HttpMethod.POST, "/kayaks").hasAuthority("ROLE_ADMIN")
-        .pathMatchers(HttpMethod.POST, "/kayaks/**").hasAuthority("ROLE_ADMIN")
+        .pathMatchers(HttpMethod.POST, "/kayaks").hasAuthority("Admin")
+        .pathMatchers(HttpMethod.POST, "/kayaks/**").hasAuthority("Admin")
         .anyExchange().authenticated()
         .and()
         .oauth2ResourceServer()

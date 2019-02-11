@@ -34,14 +34,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-webflux')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
     compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
-
-    compile("org.springframework.boot:spring-boot-starter-security")
-    compile("org.springframework.security:spring-security-oauth2-client")
-    compile("org.springframework.security:spring-security-oauth2-resource-server")
-    compile("org.springframework.security:spring-security-oauth2-jose")
-
-    compile('com.okta.spring:okta-spring-boot-starter:1.0.0')
-
+    compile('com.okta.spring:okta-spring-boot-starter:1.1.0')
+    
     compileOnly('org.projectlombok:lombok')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')

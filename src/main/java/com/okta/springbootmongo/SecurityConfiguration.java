@@ -15,7 +15,6 @@ public class SecurityConfiguration {
   public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
     http
         .authorizeExchange()
-        .pathMatchers(HttpMethod.GET, "/kayaks").hasAuthority("Admin")
         .pathMatchers(HttpMethod.POST, "/kayaks/**").hasAuthority("Admin")
         .anyExchange().authenticated()
         .and()
